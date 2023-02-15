@@ -1,6 +1,7 @@
 # Chemtronics Resource Page
 ----
 
+[Direct Link](https://waterlevelmedium.github.io/CHEMTRONICS/)
 ### EPA Site Description
  >The 1,065-acre Chemtronics Superfund site is located in rural Swannanoa, North Carolina. The Superfund portion encompasses 535 acres of this property. The primary products manufactured on-Site were explosives, propellants, incapacitating agents, and a variety of specialty chemicals. Most of the manufacturing activities were discontinued by the late 1980s, and all manufacturing activities ceased in 1994.
 #### Purpose of this page
