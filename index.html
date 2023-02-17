@@ -257,7 +257,34 @@ crossorigin=""/>
             </td>
           </tr>
 
+          <tr>
+            <th scope="row">
+              <div class="form-check form-switch">
+                <input class='form-check-input' onchange="toggleLayer(HRO_2010_f5)"  type='checkbox' role="switch" id="HRO_2010_f5_switch" checked>
+              </div>
+            </th>
+            <td>
+              <label class='form-check-label' for="2010_HRO_f5_switch">2010 High Resolution Orthoimagery F5 Tile</label>
+            </td>
+            <td>
+              <i> No opacity control </i>
+            </td>
+          </tr>
 
+
+          <tr>
+            <th scope="row">
+              <div class="form-check form-switch">
+                <input class='form-check-input' onchange="toggleLayer(HRO_2010_e4)"  type='checkbox' role="switch" id="HRO_2010_e4_switch" checked>
+              </div>
+            </th>
+            <td>
+              <label class='form-check-label' for="2010_HRO_e4_switch">2010 High Resolution Orthoimagery E4 Tile</label>
+            </td>
+            <td>
+              <i> No opacity control </i>
+            </td>
+          </tr>
           <!-- END LAYER TABLE -->
 
       </tbody>
@@ -405,9 +432,11 @@ var correctedReds = chroma.scale(['black','red','yellow','white']);
 var greenToRed = chroma.scale(['#00ff00','#ff0000']).colors(6);
 
 
-var HRO_2010 = L.imageOverlay('assets/rasters/f5_2010HRO.jpg',[[35.638743, -82.433751],[ 35.625369, -82.416194]], ).addTo(map);
+var HRO_2010_f5 = L.imageOverlay('assets/rasters/f5_2010HRO.jpg',[[35.638743, -82.433751],[ 35.625369, -82.416194]]).addTo(map);
 // extent top l 35.638743N 82.433751W bottom r 35.625369N 82.416194W
 
+var HRO_2010_e4 = L.imageOverlay('assets/rasters/e4_2010HRO.jpg',[[35.624898, -82.43299],[35.638423, -82.450405]]).addTo(map);
+//35.624898N 82.43299W br  35.638423N 82.450405W tl
 
   var buildings = new L.GeoJSON.AJAX('assets/polygons/formerBuildings_[2023-02-14]_polygon.geojson',{
   	onEachFeature: function popUp(feature, layer){
