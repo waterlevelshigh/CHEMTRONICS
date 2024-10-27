@@ -69,7 +69,7 @@ crossorigin=""/>
 	html {
 		box-sizing: border-box;
     margin: 0px;
-    padding 0;
+    padding: 0px;
     width: 100%;
     line-height:0;
 
@@ -285,6 +285,37 @@ crossorigin=""/>
               <i> No opacity control </i>
             </td>
           </tr>
+
+          <!-- 2024 layers-->
+          <tr>
+            <th scope="row">
+              <div class="form-check form-switch">
+                <input class='form-check-input' onchange="toggleLayer(SentinnelAerial_10072024)"  type='checkbox' role="switch" id="HRO_SentinnelAerial_10072024_switch" checked>
+              </div>
+            </th>
+            <td>
+              <label class='form-check-label' for="HRO_SentinnelAerial_10072024_switch">October 7th 2024</br>Senntinel Aerial Iamgery </br> True Color </label>
+            </td>
+            <td>
+              <i> No opacity control </i>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">
+              <div class="form-check form-switch">
+                <input class='form-check-input' onchange="toggleLayer(sep27Landslides)"  type='checkbox' role="switch" id="HRO_SentinnelAerial_10072024_switch" checked>
+              </div>
+            </th>
+            <td>
+              <label class='form-check-label' for="HRO_SentinnelAerial_10072024_switch"> September 27 Landslides </label>
+            </td>
+            <td>
+              <input id="slide" type="range" min="0" max="1" step="0.01" value="1" onchange="updateLayerOpacity(sep27Landslides, this.value)">
+
+            </td>
+          </tr>
+
           <!-- END LAYER TABLE -->
 
       </tbody>
@@ -438,6 +469,16 @@ var HRO_2010_f5 = L.imageOverlay('assets/rasters/f5_2010HRO.jpg',[[35.638743, -8
 var HRO_2010_e4 = L.imageOverlay('assets/rasters/e4_2010HRO.jpg',[[35.624898, -82.43299],[35.638423, -82.450405]]).addTo(map);
 //35.624898N 82.43299W br  35.638423N 82.450405W tl
 
+
+var SentinnelAerial_10072024 = L.imageOverlay('assets/rasters/10_07_2024_SentinnelAerial.jpeg',[[35.613572342,-82.464794495],[35.649486557 ,-82.419952904]]).addTo(map);
+//35.624898N 82.43299W br  35.638423N 82.450405W tl
+//-82.464794495,-82.419952904,35.613572342,35.649486557   -- referenced -- calculated by qgis
+
+
+
+
+
+
   var buildings = new L.GeoJSON.AJAX('assets/polygons/formerBuildings_[2023-02-14]_polygon.geojson',{
   	onEachFeature: function popUp(feature, layer){
   			// show polygon group type
@@ -559,6 +600,30 @@ var HRO_2010_e4 = L.imageOverlay('assets/rasters/e4_2010HRO.jpg',[[35.624898, -8
     	dashArray:'4',
 
     }).addTo(map);
+
+
+    // 2024 layer start
+
+    var sep27Landslides =  new L.GeoJSON.AJAX('assets/polygons/sep27Landslides.geojson',{
+    	onEachFeature: function popUp(feature, layer){
+    			// show polygon group type
+    				// popup with whole ssurgo table
+    			 var out = [];
+    			 if (feature.properties){
+    					 for(key in feature.properties){
+    							 out.push(key+": "+feature.properties[key]);
+    					 }
+    					 layer.bindPopup(out.join("<br />"),{autoPan: false});
+
+           };
+    	 },
+       fillColor: '#10f',
+    	fillOpacity: .2,
+    	opacity:.2,
+    	dashArray:'4',
+
+    }).addTo(map);
+
 
 
 
